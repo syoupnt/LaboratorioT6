@@ -23,8 +23,8 @@ def registrar_prestamo(equipos, prestamos):
     codigo, equipo = solicitar_codigo_equipo(equipos)
 
     if equipo["estado"] != ESTADO_DISPONIBLE:
-        print(f"  [Error] El equipo {codigo} esta "
-              f"{equipo['estado'].lower()}; no se puede prestar.")
+        print(f"  [Error] El equipo {codigo} tiene estado "
+              f"'{equipo['estado']}'; no se puede prestar.")
         return False
 
     estudiante = validar_texto_no_vacio("Nombre del estudiante: ")
