@@ -12,9 +12,9 @@ from equipos import consultar_disponibilidad_por_categoria
 from equipos import crear_equipo, listar_disponibilidad, registrar_equipo
 from prestamos import devolver_equipo, listar_prestamos_activos
 from prestamos import registrar_prestamo
-from utilidades import codigo_equipo_existe, seleccionar_opcion
+from utilidades import seleccionar_opcion
 
-OPCIONES_MENU = ("1", "2", "3", "4", "5", "6", "7", "0")
+OPCIONES_MENU = ("1", "2", "3", "4", "5", "6", "0")
 
 
 def cargar_equipos_iniciales():
@@ -43,19 +43,8 @@ def mostrar_menu_principal():
     print("  4. Listar disponibilidad")
     print("  5. Disponibilidad por categoria")
     print("  6. Listar prestamos activos")
-    print("  7. Registrar equipo de ejemplo")
     print("  0. Salir")
     print("-" * 45)
-
-
-def registrar_equipo_demo(equipos):
-    """Agrega un equipo de ejemplo (solo para demostracion/pruebas)."""
-    equipo = crear_equipo("EQ900", "Tablet Lenovo", "laptop")
-    if codigo_equipo_existe(equipo["codigo"], equipos):
-        print("  El equipo de ejemplo ya fue agregado antes.")
-        return
-    equipos.append(equipo)
-    print("  Equipo de ejemplo EQ900 agregado.")
 
 
 def ejecutar_opcion(opcion, equipos, prestamos):
@@ -72,8 +61,6 @@ def ejecutar_opcion(opcion, equipos, prestamos):
         consultar_disponibilidad_por_categoria(equipos)
     elif opcion == "6":
         listar_prestamos_activos(prestamos)
-    elif opcion == "7":
-        registrar_equipo_demo(equipos)
 
 
 def main():
