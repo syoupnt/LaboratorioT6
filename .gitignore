@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Archivos de la guia (no se versionan)
+GUIALAB20260_TEMA 6_CIIN1205P.docx
+Ejemplo_Informe_Lab_Tema4_CIIN1205P.html
+Informe_Lab_Tema6_CIIN1205P.html
+
+# Editores / sistema
+.vscode/
+.idea/
+Thumbs.db
