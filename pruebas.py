@@ -26,7 +26,6 @@ from equipos import consultar_disponibilidad_por_categoria, crear_equipo
 from equipos import registrar_equipo
 from prestamos import devolver_equipo, registrar_prestamo
 
-
 def catalogo_base():
     """Catalogo pequeño y conocido para las pruebas."""
     return [
@@ -140,9 +139,12 @@ def probar_listado_por_categoria():
 
     _resultado, texto = ejecutar([], consultar_disponibilidad_por_categoria,
                                  equipos)
-    esperado = "laptop     1 de 2 disponibles"
-    obtenido = (f"linea_laptop='{[l for l in texto.splitlines() if 'laptop' in l]}'")
-    ok = esperado in texto and "mouse      1 de 1 disponibles" in texto
+    lineas = {l.strip().split()[0]: l.strip() for l in texto.splitlines()
+              if "disponibles" in l}
+    obtenido = (f"laptop='{lineas.get('laptop', 'sin linea')}' | "
+                f"mouse='{lineas.get('mouse', 'sin linea')}'")
+    ok = (lineas.get("laptop", "").endswith("1 de 2 disponibles")
+          and lineas.get("mouse", "").endswith("1 de 1 disponibles"))
     return ok, obtenido, texto
 
 
